@@ -1,0 +1,13 @@
+body {
+  background-color: #525252;
+}
+
+#save {
+  background-color: #ec625f;
+  /* what color is this? #ec625f */
+}
+#save:hover {
+  background-color: rgba(236, 98, 95, 0.8);
+}
+
+/*# sourceMappingURL=auth.css.map */

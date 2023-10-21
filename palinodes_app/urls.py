@@ -1,14 +1,11 @@
 from django.urls import path
 from . import views
 from . import apis
-from .views import CreateRepository
 
 urlpatterns = [
     path('', views.index, name="index"),
     path("dashboard", views.dashboard, name="dashboard"),
-    path("new-repository", CreateRepository.as_view(), name="new-repository"),
     path("repository/<int:repository_id>", views.repository_view, name="repository"),
-    path("repository/<int:repositorypk>/settings", views.repository_settings, name="settings"),
     #API urls
     path("api/leave/<int:repositorypk>", apis.LeaveRepository.as_view(), name = "leave"),
     path("api/add-collaborator", apis.AddCollaborator.as_view(), name="add-collaborator"),

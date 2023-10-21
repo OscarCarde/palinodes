@@ -1,0 +1,17 @@
+@use "variables" as var;
+@use 'sass:color';
+@use 'sass:list';
+
+body {
+    background-color: list.nth(var.$colors, 1) ;
+}
+
+#save {
+  $bg: list.nth(var.$colors, -1);
+  background-color: $bg;
+  &:hover {
+    background-color: color.adjust($bg, $alpha: -0.2)
+  }
+  /* what color is this? #{$bg} */
+}
+

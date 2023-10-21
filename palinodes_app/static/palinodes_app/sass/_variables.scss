@@ -1,0 +1,8 @@
+$colors: #525252, #414141, #313131, #ec625f;
+
+@mixin my_mixin($arg1: 1, $arg2: 2) {
+    .btn {
+        border-radius: $arg1;
+        bottom: $arg2;
+    }
+}
