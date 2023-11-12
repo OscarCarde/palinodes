@@ -147,8 +147,6 @@ def register(request):
         try:
             user = User.objects.create_user(username, email, password)
             user.save()
-            profile = Profile.objects.create(user=user)
-            profile.save()
         except IntegrityError:
             return render(request, "palinodes_app/register.html", {
                 "message": "Username already taken."

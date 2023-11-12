@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
 
 INSTALLED_APPS = [
     "rest_framework",
-    "palinodes_app",
+    "palinodes_app.apps.PalinodesAppConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
