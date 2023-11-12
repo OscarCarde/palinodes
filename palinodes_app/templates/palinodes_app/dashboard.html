@@ -1,0 +1,27 @@
+{% extends "palinodes_app/layout.html" %}
+
+{% block body %}
+<main>
+    <button>Recent</button>
+    <button>Owned</button>
+    <button>Collaborating</button>
+
+    <form>
+        <input type="search" name="search" aria-label="search form">
+    </form>
+
+    {% for repository in user.profile.repositories %}
+    <div>
+        <img src="#" alt="soundwave icon">
+        <a href="">{{repository.name}}</a>
+        <img src="" alt="bell icon">
+        <p>{{repository.description}}</p>
+        <div>
+            <img src="#" alt="people icon">
+            <p>{{repository.number_of_collaborators}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</main>
+
+{% endblock body %}

@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +9,13 @@
     {% block title %}{% endblock title %}
 </head>
 <body>
-
-    
+<nav>
+    <ul>
+        <li> logo </li>
+        <li><img src="{{user.profile.avatar.url}}" alt="profile picture" width="50" height="50"></li>
+        <li><a href="">Logout</a></li>
+    </ul>
+</nav>
+{% block body %}{% endblock body %}  
 </body>
 </html>
