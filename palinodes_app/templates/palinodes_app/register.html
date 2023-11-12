@@ -1,31 +1,22 @@
-{% extends "palinodes_app/login.html" %}
+{% extends "palinodes_app/auth.html" %}
 
-
-{% block body %}
-
-    <h2>Register</h2>
-
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
-
-    <form action="{% url 'register' %}" method="post">
-        {% csrf_token %}
-        <div>
-            <input class="text-input" autofocus type="text" name="username" placeholder="Username">
-        </div>
-        <div>
-            <input class="text-input" type="email" name="email" placeholder="Email Address">
-        </div>
-        <div class="form-group">
-            <input class="text-input" type="password" name="password" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <input class="text-input" type="password" name="confirmation" placeholder="Confirm Password">
-        </div>
+{% block form %}
+<h3>Register</h3>
+<form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    <div id="fields-container">
+        <input autofocus type="text" name="username" placeholder="Username">
+        <input type="email" name="email" placeholder="Email Address">
+        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="confirmation" placeholder="Confirm Password">
+    </div>
+    <div id="submit-container">
         <input type="submit" value="Register">
-    </form>
-
-    Already have an account? <a href="{% url 'login' %}">Log In here.</a>
-
-{% endblock %}
+        <div>
+            <p>Already have an account?</p>
+            <a href="{% url 'login' %}">Log In here.</a>
+        </div>
+        
+    </div>
+</form>
+{% endblock form %}

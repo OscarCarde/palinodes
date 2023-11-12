@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static "palinodes_app/css/auth.css" %}>
+    {%block title %}
+    {% endblock title %}
+</head>
+<body id="layer">
+{% if message %}
+    <div>{{ message }}</div>
+{% endif %}
+
+<div id="form-container">
+    {% block form %}{% endblock form %}
+</div>

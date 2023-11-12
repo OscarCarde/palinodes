@@ -1,33 +1,19 @@
-{% load static %}
+{% extends "palinodes_app/auth.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href={% static "palinodes_app/css/auth1.css" %}>
-    <title>{%block title %}index{% endblock title %}</title>
-</head>
-<body>
-{% block body %} 
-
-    <h2>Login</h2>
-
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
-
-    <form action="{% url 'login' %}" method="post">
-        {% csrf_token %}
+{% block form %}
+<h3>Login</h3>
+<form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    <div id="fields-container">
+        <input autofocus type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+    </div>
+    <div id="submit-container">
+        <input type="submit" value="Login">
         <div>
-            <input autofocus class="text-input" type="text" name="username" placeholder="Username">
+            <p>Don't have an account?</p>
+            <a href="{% url 'register' %}">Register here.</a>O
         </div>
-        <div>
-            <input class="text-input" type="password" name="password" placeholder="Password">
-        </div>
-        <input id="save" type="submit" value="Login">
-    </form>
-
-    Don't have an account? <a href="{% url 'register' %}">Register here.</a>
-
+    </div>
+</form>
 {% endblock %}
