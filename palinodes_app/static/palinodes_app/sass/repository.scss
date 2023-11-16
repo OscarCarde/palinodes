@@ -1,0 +1,22 @@
+@use "variables" as var;
+@use "mixins" as mxn;
+@use "sass:list";
+
+
+
+// remove default behaviour
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    // border: solid red 0.2px;
+}
+
+// global behaviour
+@include mxn.root();
+@include mxn.navbar($bg: list.nth(var.$colors, 3));
+
+body {
+overflow: hidden;    background-color: list.nth(var.$colors, 2);
+}

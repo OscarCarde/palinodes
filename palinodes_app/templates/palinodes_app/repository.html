@@ -1,0 +1,53 @@
+{% extends "palinodes_app/layout.html" %}
+
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href={% static 'palinodes_app/css/repository.css' %}>
+{% endblock stylesheet %}
+
+{% block title %}
+<title>{{repository.name}}</title>
+{% endblock title %}
+
+{% block body %}
+<ul>
+    <li>
+        <img src="" alt="">
+        <h4>Files</h4>
+    </li>
+    <li>
+        <img src="" alt="">
+        <h4>Chat</h4>
+    </li>
+    <li>
+        <img src="" alt="">
+        <h4>Settings</h4>
+    </li>
+</ul>
+<main>
+    <div>
+        <button>Create Folder</button>
+        <button>Add File</button>
+        <table>
+            <th>Lore Ipsum</th>
+            {% for directory in repository.subdirectories %}
+            <tr>
+                <img src="{% get_media_prefix %}" alt="">
+                <p></p>
+            </tr>
+            {% endfor %}
+            {% for file in repository.files %}
+            {% endfor %}
+        </table>
+    </div>
+    <div>
+        <h4></h4>
+        <p></p>
+        <h4></h4>
+        <h4></h4>
+        <div></div>
+        <a href=""></a>
+    </div>
+</main>
+{% endblock body %}

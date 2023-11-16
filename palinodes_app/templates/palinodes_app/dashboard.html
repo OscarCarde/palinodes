@@ -26,17 +26,19 @@
     <div id="repositories-container">
         {% for repository in user.profile.repositories %}
         <div class="repository-card">
+            <a href="{% url "repository" repository.pk %}" class="link-layer"></a>
             <div>
                 <img src="{% get_media_prefix %}assets/audio-wave.png" alt="soundwave icon">
                 <h4>{{repository.name}}</h4>
-                <img src="{% get_media_prefix %}assets/bell-fill.png" alt="bell icon">
-            </div>
-            <div>
-                <p>{{repository.description}}</p>
-                <div>
-                    <img src="{% get_media_prefix %}assets/people.png" alt="people icon">
-                    <p>{{repository.number_of_collaborators}}</p>
+                <div class="bell">
+                    <img src="{% get_media_prefix %}assets/bell-fill.png" alt="bell icon">
                 </div>
+                
+            </div>
+            <p>{{repository.description}}</p>
+            <div class="collaborators">
+                <img src="{% get_media_prefix %}assets/people.png" alt="people icon">
+                <p>{{repository.number_of_collaborators}}</p>
             </div>
         </div>
         {% endfor %}

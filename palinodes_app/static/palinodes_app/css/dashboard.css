@@ -99,9 +99,13 @@ nav ul li #profile-picture {
   border-radius: 8px;
   background-color: #313131;
   box-shadow: 2px 2px 5px black;
+  position: relative;
   width: 95%;
   padding: 15px;
   margin: 8px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .repository-card:hover {
   background-color: #5a5a5a;
@@ -110,12 +114,31 @@ nav ul li #profile-picture {
   background-color: #2f2f2f;
 }
 .repository-card div {
+  margin-bottom: 10px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 .repository-card div h4 {
   color: #ec625f;
+  margin-left: 20px;
+}
+
+.link-layer {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.bell {
+  flex-grow: 1;
+}
+.bell img {
+  margin-left: 90%;
+}
+
+.collaborators {
+  align-self: flex-end;
 }
 
 @media screen and (min-width: 600px) {
