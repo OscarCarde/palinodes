@@ -1,0 +1,106 @@
+@use "variables" as var;
+@use 'sass:color';
+@use 'sass:list';
+
+
+
+
+@mixin root() {
+    :root {
+        color: white;
+        font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: lighter;
+      
+        font-size: medium;
+      }
+}
+
+@mixin clickable($bg: list.nth(var.$colors, 4)) {
+    &:hover {
+        background-color: color.scale($bg, $lightness: 20%);
+    }
+    &:active {
+        background-color: color.scale($bg, $blackness: 20%);
+    }
+}
+
+@mixin bordered($color: #ffffff90, $width: 0.2px) {
+    border: solid $color $width;
+    border-radius: 8px;
+}
+
+@mixin navbar($bg: list.nth(var.$colors, 1)) {
+    nav {
+        background-color: $bg;
+        margin-bottom: 30px;
+        ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+
+            margin: 10px 20px;
+            li {
+                a{
+                    color: list.nth(var.$colors, 4);
+                    text-decoration: none;
+                    font-weight: bold;
+                }
+                #profile-picture {
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+
+@mixin btn_mixin($width: auto, $padding-x: 10px, $padding-y:10px, $bg: list.nth(var.$colors, 4), $font-size: large, $bord-radius: 5px, $shadow: true) {
+    @include bordered($color: #ffffff09);
+    @include clickable($bg: $bg);
+
+    background-color: $bg;
+    color: white;
+
+    @if $shadow {
+        box-shadow: 1px 1px 3px black;
+    }
+    
+    width: $width;
+    
+    padding: $padding-y $padding-x;
+    font-size: $font-size;
+}
+
+@mixin text_input_mixin($width: 300px, $bg: list.nth(var.$colors, 3), $padding-x: 10px, $padding-y:10px, $font-size: medium) {
+    @include bordered();
+
+    color: white;
+    width: $width;
+    font-size: $font-size;
+
+    padding: $padding-y $padding-x;
+    background-color: $bg;
+}
+
+@mixin form_layer_mixin($bg: list.nth(var.$colors, 1), $form-bg: list.nth(var.$colors, 2 )) {
+
+    #layer {
+        width: 100%; height: 100%;
+        position: fixed; top:0; left:0;
+        background-color: $bg;
+        
+        display: flex;
+        align-items: center;
+    }
+
+    #form-container {
+        width:fit-content;
+        margin: auto; 
+        padding: 20px;
+        background-color: $form-bg;
+        h3 {
+            text-align: center;
+            font-weight: lighter;
+        }
+    }
+}

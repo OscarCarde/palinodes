@@ -1,0 +1,98 @@
+@use "variables" as var;
+@use "mixins" as mxn;
+@use "sass:list";
+
+// remove default behaviour
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    // border: solid red 0.2px;
+}
+
+// global behaviour
+@include mxn.root();
+
+body {
+    background-color: list.nth(var.$colors, 1);
+}
+
+@include mxn.navbar();
+
+// Recent | Owned | New buttons appearance and layout
+#dash-btns-container {
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+    .repositories-toggle {
+        @include mxn.btn_mixin($bg:list.nth(var.$colors, 1), $width: 130px, $bord-radius: 0px, $font-size: medium);
+        
+    }
+    #new {
+        @include mxn.btn_mixin($bord-radius: 0px, $width: 100px, $font-size: medium);
+    }
+
+
+#search-form {
+    margin: 20px;
+    input {
+        @include mxn.text_input_mixin($width: 220px, $padding-y: 3px);
+    }
+}
+
+// Repositoriy Cards
+#repositories-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.repository-card {
+    $bg: list.nth(var.$colors, 3);
+
+    @include mxn.clickable($bg: $bg);
+    @include mxn.bordered($color: #ffffff09);
+
+    background-color: $bg;
+    box-shadow: 2px 2px 5px black;
+
+    width: 95%;
+    padding: 15px;
+    margin: 8px auto;
+
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h4 {
+            color: list.nth(var.$colors, 4);
+        }
+    }
+    
+    
+}
+
+@media screen and (min-width: 600px) {
+    main {
+        margin: 0px auto;
+        max-width: 1200px;
+
+    }
+
+    .repository-card {
+        width: 430px;
+        margin: 10px;
+
+        @include mxn.bordered();
+        box-shadow: none;
+    }
+
+    .repositories-toggle,
+    #new {
+        @include mxn.bordered();
+        box-shadow: none;
+    }
+}

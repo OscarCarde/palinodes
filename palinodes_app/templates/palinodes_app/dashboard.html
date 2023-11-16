@@ -1,27 +1,47 @@
 {% extends "palinodes_app/layout.html" %}
 
+{% load static %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href={% static 'palinodes_app/css/dashboard.css' %}>
+{% endblock stylesheet %}
+
+{% block title %}
+<title>Dashboard</title>
+{% endblock title %}
+
 {% block body %}
 <main>
-    <button>Recent</button>
-    <button>Owned</button>
-    <button>Collaborating</button>
+    <div id="dash-btns-container">
+        <button class="repositories-toggle">Owned</button>
+        <button class="repositories-toggle">Collaborating</button>
+        <button id="new">New</button>
+    </div>
+    
 
-    <form>
-        <input type="search" name="search" aria-label="search form">
+    <form id="search-form">
+        <input type="search" name="search" aria-label="search form" placeholder="Search">
     </form>
 
-    {% for repository in user.profile.repositories %}
-    <div>
-        <img src="#" alt="soundwave icon">
-        <a href="">{{repository.name}}</a>
-        <img src="" alt="bell icon">
-        <p>{{repository.description}}</p>
-        <div>
-            <img src="#" alt="people icon">
-            <p>{{repository.number_of_collaborators}}</p>
+    <div id="repositories-container">
+        {% for repository in user.profile.repositories %}
+        <div class="repository-card">
+            <div>
+                <img src="{% get_media_prefix %}assets/audio-wave.png" alt="soundwave icon">
+                <h4>{{repository.name}}</h4>
+                <img src="{% get_media_prefix %}assets/bell-fill.png" alt="bell icon">
+            </div>
+            <div>
+                <p>{{repository.description}}</p>
+                <div>
+                    <img src="{% get_media_prefix %}assets/people.png" alt="people icon">
+                    <p>{{repository.number_of_collaborators}}</p>
+                </div>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+    
 </main>
 
 {% endblock body %}
