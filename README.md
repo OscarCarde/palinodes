@@ -15,7 +15,7 @@ https://www.figma.com/proto/TlmfKpF09IonyECzyZjE9D/plainodes.com?page-id=0%3A1&n
   - HTML5/CSS3
   - Sass
   - Vanilla Javascript
-    - wavesurfer.js (waveform visualisation for audio player)
+    - wavesurfer.js (waveform visualisation for audio player) https://wavesurfer.xyz
    
   ### Production:
   
