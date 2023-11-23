@@ -10,16 +10,21 @@
 <title>{{repository.name}}</title>
 {% endblock title %}
 
+{% block nav_items %}
+<li><a href="{% url 'dashboard'  %}">Dashboard</a></li>
+{% endblock nav_items %}
+
 {% block body %}
+
 <ul id="navbar">
     <li>
         <img src="" alt="">
         <h4>Files</h4>
     </li>
-    <li>
+    <!-- <li>
         <img src="" alt="">
         <h4>Chat</h4>
-    </li>
+    </li> -->
     <li>
         <img src="" alt="">
         <h4>Settings</h4>

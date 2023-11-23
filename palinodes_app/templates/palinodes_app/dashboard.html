@@ -10,11 +10,17 @@
 <title>Dashboard</title>
 {% endblock title %}
 
+{% block nav_items %}
+<li><img src="{%get_media_prefix%}assets/logo.png" width="35px" alt="logo, the letter p with a bar crossing it, looking like a note on sheet music zoomed in"></li>
+<li><img id="profile-picture" src="{{user.profile.avatar.url}}" alt="profile picture" width="50" height="50"></li>
+{% endblock nav_items %}
+
 {% block body %}
+
 <main>
     <div id="dash-btns-container">
-        <button class="repositories-toggle">Owned</button>
-        <button class="repositories-toggle">Collaborating</button>
+        <!-- <button class="repositories-toggle">Owned</button>
+        <button class="repositories-toggle">Collaborating</button> -->
         <button id="new">New</button>
     </div>
     
@@ -26,7 +32,7 @@
     <div id="repositories-container">
         {% for repository in user.profile.repositories %}
         <div class="repository-card">
-            <a href="{% url "repository" repository.pk %}" class="link-layer"></a>
+            <a href="{% url 'repository' repository.pk %}" class="link-layer"></a>
             <div>
                 <img src="{% get_media_prefix %}assets/audio-wave.png" alt="soundwave icon">
                 <h4>{{repository.name}}</h4>

@@ -11,9 +11,9 @@
 <body>
 <nav>
     <ul>
-        <li><img src="{%get_media_prefix%}assets/logo.png" width="35px" alt="logo, the letter p with a bar crossing it, looking like a note on sheet music zoomed in"></li>
-        <li><img id="profile-picture" src="{{user.profile.avatar.url}}" alt="profile picture" width="50" height="50"></li>
-        <li><a href="">Logout</a></li>
+        {% block nav_items %}
+        {% endblock nav_items %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
     </ul>
 </nav>
 {% block body %}{% endblock body %}  
