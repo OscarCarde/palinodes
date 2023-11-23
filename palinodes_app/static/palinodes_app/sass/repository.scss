@@ -18,5 +18,26 @@
 @include mxn.navbar($bg: list.nth(var.$colors, 3));
 
 body {
-overflow: hidden;    background-color: list.nth(var.$colors, 2);
+    overflow: hidden;    
+    background-color: list.nth(var.$colors, 2);
+}
+
+nav{
+    margin-bottom: 0px;
+    ul {
+        margin-bottom: 0px;
+    }
+}
+
+#navbar {
+    background-color: list.nth(var.$colors, 3);
+    list-style: none;
+
+    display: flex;
+
+    padding: 20px 15px;
+
+    li {
+        margin-right: 20px;
+    }
 }

@@ -11,7 +11,7 @@
 {% endblock title %}
 
 {% block body %}
-<ul>
+<ul id="navbar">
     <li>
         <img src="" alt="">
         <h4>Files</h4>
@@ -30,14 +30,17 @@
         <button>Create Folder</button>
         <button>Add File</button>
         <table>
-            <th>Lore Ipsum</th>
-            {% for directory in repository.subdirectories %}
+            <tr>
+                <img id="profile-picture" src="{{user.profile.avatar.url}}" alt="profile picture" width="50" height="50">
+                <p>{{repository.owner.username}} created repository <span>{{repository.name}}</span></p>
+            </tr>
+            {% for directory in repository.subdirectories.all %}
             <tr>
                 <img src="{% get_media_prefix %}" alt="">
                 <p></p>
             </tr>
             {% endfor %}
-            {% for file in repository.files %}
+            {% for file in repository.files.all %}
             {% endfor %}
         </table>
     </div>

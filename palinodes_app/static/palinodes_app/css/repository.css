@@ -37,4 +37,21 @@ body {
   background-color: #414141;
 }
 
+nav {
+  margin-bottom: 0px;
+}
+nav ul {
+  margin-bottom: 0px;
+}
+
+#navbar {
+  background-color: #313131;
+  list-style: none;
+  display: flex;
+  padding: 20px 15px;
+}
+#navbar li {
+  margin-right: 20px;
+}
+
 /*# sourceMappingURL=repository.css.map */
