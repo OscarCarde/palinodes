@@ -101,7 +101,7 @@ def repository_view(request, repository_id):
 
     
 
-    return render(request, "palinodes/repository.html", {
+    return render(request, "palinodes_app/repository.html", {
         "repository": repository,
         })
 
