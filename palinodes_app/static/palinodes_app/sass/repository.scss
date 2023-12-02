@@ -18,7 +18,7 @@
 @include mxn.navbar($bg: list.nth(var.$colors, 3));
 
 body {
-    overflow: hidden;    
+    overflow: scroll;    
     background-color: list.nth(var.$colors, 2);
 }
 
@@ -35,9 +35,104 @@ nav{
 
     display: flex;
 
-    padding: 20px 15px;
+    padding: 20px 15px 0px 15px;
 
     li {
         margin-right: 20px;
+        margin-bottom: 3px;
+        padding-bottom: 10px;
+
+        display:flex;
+        flex-basis: 100px;
+
+        align-items: center;
+
+        img {
+            margin-right: 10px;
+        }
+
+        &:hover {
+            border-bottom: solid list.nth(var.$colors, 4);
+            margin-bottom: 0px;
+            cursor:pointer;
+        }
+    }
+}
+
+#buttons-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-picture {
+    border-radius: 50%;
+}
+
+button {
+    @include mxn.btn_mixin($bg: list.nth(var.$colors, 3), $padding-y: 1px, $font-size: medium);
+    margin: 10px 10px;
+}
+
+table {
+    margin-left: 20px;
+    margin-bottom: 20px;
+
+    width: 95%;
+}
+
+tr:nth-child(1) td {
+    background-color: list.nth(var.$colors, 1);
+}
+
+td {
+    @include mxn.clickable(list.nth(var.$colors, 2));
+
+    display: flex;
+    align-items: center;
+
+    padding: 10px 15px;
+
+    img {
+        margin-right: 20px;
+    }
+    border-bottom: solid #ffffff90 0.2px;
+
+    span {
+        color: list.nth($list: var.$colors, $n: 4);
+        font-weight: bold;
+    }
+
+
+}
+
+#details-section {
+    margin: 5px;
+    h4 {
+        margin-bottom: 10px;;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    main {
+        margin: auto 1.5%;
+    }
+
+    #files-section {
+        width: 800px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #details-section {
+        width: 350px;
+        display: inline-block;
+        vertical-align:bottom;
+    }
+
+    button {
+        @include mxn.bordered();
+        box-shadow: none;
+        padding: 8px;
+
     }
 }

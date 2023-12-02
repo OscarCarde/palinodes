@@ -18,44 +18,65 @@
 
 <ul id="navbar">
     <li>
-        <img src="" alt="">
+        <img src="{% get_media_prefix %}assets/folder.png" alt="folder icon">
         <h4>Files</h4>
     </li>
     <!-- <li>
-        <img src="" alt="">
+        <img src="{% get_media_prefix %}assets/chat.png" alt="">
         <h4>Chat</h4>
     </li> -->
     <li>
-        <img src="" alt="">
+        <img src="{% get_media_prefix %}assets/gear.png" alt="gear icon">
         <h4>Settings</h4>
     </li>
 </ul>
 <main>
-    <div>
-        <button>Create Folder</button>
-        <button>Add File</button>
+    <div id="files-section">
+        <div id="buttons-container">
+            <button>Create Folder</button>
+            <button>Add File</button>
+        </div>
         <table>
             <tr>
-                <img id="profile-picture" src="{{user.profile.avatar.url}}" alt="profile picture" width="50" height="50">
-                <p>{{repository.owner.username}} created repository <span>{{repository.name}}</span></p>
+                <td>
+                    <img class="profile-picture" src="{{user.profile.avatar.url}}" alt="profile picture" width="50" height="50">
+                    <p><strong>{{repository.owner.username}}</strong> created repository <span>{{repository.name}}</span></p>
+                </td>
             </tr>
             {% for directory in repository.subdirectories.all %}
             <tr>
-                <img src="{% get_media_prefix %}" alt="">
-                <p></p>
+                <td>
+                    <img src="{% get_media_prefix %}assets/directory.png" alt="">
+                    <p>{{ directory.name }}</p>
+                </td>
             </tr>
             {% endfor %}
             {% for file in repository.files.all %}
+            <tr>
+                <td>
+                    <img src="{% get_media_prefix %}assets/file.png" alt="">
+                    <p>{{ file.filename }}</p>
+                </td>
+            </tr>
             {% endfor %}
         </table>
     </div>
-    <div>
-        <h4></h4>
-        <p></p>
-        <h4></h4>
-        <h4></h4>
-        <div></div>
-        <a href=""></a>
+    <div id="details-section">
+        <h4>About</h4>
+        <p>{{repository.description}}</p>
+        <h4>{{repository.owner.username}}</h4>
+        <h4>Collaborators</h4>
+        <div>
+            {% for collaborator in repository.collaborators.all %}
+            {% if collaborator.profile.avatar %}
+            <img class="profile-picture" src="{{collaborator.profile.avatar.url }}" alt="profile picture" width="50" height="50">
+            {% else %}
+            <img src="{% get_media_prefix %}assets/default-profile-picture.png" alt="profile picture" width="50" height="50">
+            {% endif %}
+            <p>{{collaborator.username}}</p>
+            {% endfor %}
+        </div>
+        <p>Add</p>
     </div>
 </main>
 {% endblock body %}

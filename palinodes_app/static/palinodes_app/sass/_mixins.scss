@@ -28,6 +28,7 @@
 @mixin clickable($bg: list.nth(var.$colors, 4)) {
     &:hover {
         background-color: color.scale($bg, $lightness: 20%);
+        cursor: pointer;
     }
     &:active {
         background-color: color.scale($bg, $blackness: 20%);

@@ -54,6 +54,7 @@ body {
 }
 .repositories-toggle:hover {
   background-color: #757575;
+  cursor: pointer;
 }
 .repositories-toggle:active {
   background-color: #4d4d4d;
@@ -71,6 +72,7 @@ body {
 }
 #new:hover {
   background-color: #f0817f;
+  cursor: pointer;
 }
 #new:active {
   background-color: #bd615f;
@@ -110,6 +112,7 @@ body {
 }
 .repository-card:hover {
   background-color: #5a5a5a;
+  cursor: pointer;
 }
 .repository-card:active {
   background-color: #2f2f2f;
