@@ -1,6 +1,7 @@
 @use "variables" as var;
 @use "mixins" as mxn;
 @use "sass:list";
+@use 'sass:color';
 
 
 
@@ -95,38 +96,80 @@ td {
     img {
         margin-right: 20px;
     }
-    border-bottom: solid #ffffff90 0.2px;
+
+    a {
+        color:#ffffff;
+    }
 
     span {
         color: list.nth($list: var.$colors, $n: 4);
         font-weight: bold;
     }
 
+    border-bottom: solid #ffffff90 0.2px;
+}
 
+.delete {
+    margin-left: auto;
 }
 
 #details-section {
-    margin: 5px;
+    margin: 60px 0px 5px 20px;
     h4 {
-        margin-bottom: 10px;;
+        margin-bottom: 10px;
     }
+    
+}
+
+#repository-description {
+    color: #ffffff90;
+}
+
+#owner {
+    margin-top: 10px;
+    padding:10px 0px;
+    border-bottom: solid #ffffff90 0.2px;
+}
+
+#collaborators-list {
+    height: 130px;
+    overflow: scroll;
+}
+
+.collaborator-container {
+    padding: 7px 0px;
+    display: flex;
+    align-items: center;
+    img {
+        margin-right: 20px;
+    }
+}
+
+#add-collaborator {
+    @include mxn.clickable($bg: #ffffff00);
+
+    font-weight: bold;
+    color: list.nth(var.$colors, 4);
+
+    width:fit-content;
+    margin-left: auto;
+    margin-right: 20px;
 }
 
 @media screen and (min-width: 600px) {
     main {
-        margin: auto 1.5%;
+        max-width: 1300px;
+        margin: 30px auto;
+        display: flex;
+        justify-content: space-between;
     }
 
     #files-section {
-        width: 800px;
-        display: inline-block;
-        vertical-align: top;
+        flex-basis: 800px;
     }
 
     #details-section {
-        width: 350px;
-        display: inline-block;
-        vertical-align:bottom;
+        flex-basis: 400px;
     }
 
     button {

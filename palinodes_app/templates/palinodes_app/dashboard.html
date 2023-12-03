@@ -21,7 +21,11 @@
     <div id="dash-btns-container">
         <!-- <button class="repositories-toggle">Owned</button>
         <button class="repositories-toggle">Collaborating</button> -->
-        <button id="new">New</button>
+        <button id="new" onclick= showNewForm()>New</button>
+        <form style="display: none;" method="post">
+            {{repository_form.name}}
+            {{repository_form.description}}
+        </form>
     </div>
     
 
@@ -36,9 +40,9 @@
             <div>
                 <img src="{% get_media_prefix %}assets/audio-wave.png" alt="soundwave icon">
                 <h4>{{repository.name}}</h4>
-                <div class="bell">
+                {% comment %} <div class="bell">
                     <img src="{% get_media_prefix %}assets/bell-fill.png" alt="bell icon">
-                </div>
+                </div> {% endcomment %}
                 
             </div>
             <p>{{repository.description}}</p>

@@ -122,31 +122,76 @@ td:active {
 td img {
   margin-right: 20px;
 }
+td a {
+  color: #ffffff;
+}
 td span {
   color: #ec625f;
   font-weight: bold;
 }
 
+.delete {
+  margin-left: auto;
+}
+
 #details-section {
-  margin: 5px;
+  margin: 60px 0px 5px 20px;
 }
 #details-section h4 {
   margin-bottom: 10px;
 }
 
+#repository-description {
+  color: rgba(255, 255, 255, 0.5647058824);
+}
+
+#owner {
+  margin-top: 10px;
+  padding: 10px 0px;
+  border-bottom: solid rgba(255, 255, 255, 0.5647058824) 0.2px;
+}
+
+#collaborators-list {
+  height: 130px;
+  overflow: scroll;
+}
+
+.collaborator-container {
+  padding: 7px 0px;
+  display: flex;
+  align-items: center;
+}
+.collaborator-container img {
+  margin-right: 20px;
+}
+
+#add-collaborator {
+  font-weight: bold;
+  color: #ec625f;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: 20px;
+}
+#add-collaborator:hover {
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+}
+#add-collaborator:active {
+  background-color: rgba(213, 213, 213, 0);
+}
+
 @media screen and (min-width: 600px) {
   main {
-    margin: auto 1.5%;
+    max-width: 1300px;
+    margin: 30px auto;
+    display: flex;
+    justify-content: space-between;
   }
   #files-section {
-    width: 800px;
-    display: inline-block;
-    vertical-align: top;
+    flex-basis: 800px;
   }
   #details-section {
-    width: 350px;
-    display: inline-block;
-    vertical-align: bottom;
+    flex-basis: 400px;
   }
   button {
     border: solid rgba(255, 255, 255, 0.5647058824) 0.2px;

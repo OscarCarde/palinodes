@@ -40,7 +40,7 @@ def dashboard(request):
         except Exception as e:
             print(str(e))
     return render(request, "palinodes_app/dashboard.html", {
-        "profile_form": ProfileForm()
+        "profile_form": ProfileForm(), "repository_form": RepositoryForm()
     })
 
 ''' UNUSED

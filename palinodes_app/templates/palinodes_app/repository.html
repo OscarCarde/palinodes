@@ -48,6 +48,7 @@
                 <td>
                     <img src="{% get_media_prefix %}assets/directory.png" alt="">
                     <p>{{ directory.name }}</p>
+                    <!-- <img class="delete" src="{% get_media_prefix %}assets/trash.png" alt="trashcan icon" width="15px"> -->
                 </td>
             </tr>
             {% endfor %}
@@ -55,7 +56,8 @@
             <tr>
                 <td>
                     <img src="{% get_media_prefix %}assets/file.png" alt="">
-                    <p>{{ file.filename }}</p>
+                    <a href="{{file.file.url}}" target="_blank">{{ file.filename }}</a>
+                    <!-- <img class="delete" src="{% get_media_prefix %}assets/trash.png" alt="trashcan icon" width="15px"> -->
                 </td>
             </tr>
             {% endfor %}
@@ -63,20 +65,22 @@
     </div>
     <div id="details-section">
         <h4>About</h4>
-        <p>{{repository.description}}</p>
-        <h4>{{repository.owner.username}}</h4>
-        <h4>Collaborators</h4>
-        <div>
+        <p id="repository-description">{{repository.description}}</p>
+        <h4 id="owner">{{repository.owner.username}}</h4>
+        <!-- <h4>Collaborators</h4>
+        <div id="collaborators-list">
             {% for collaborator in repository.collaborators.all %}
-            {% if collaborator.profile.avatar %}
-            <img class="profile-picture" src="{{collaborator.profile.avatar.url }}" alt="profile picture" width="50" height="50">
-            {% else %}
-            <img src="{% get_media_prefix %}assets/default-profile-picture.png" alt="profile picture" width="50" height="50">
-            {% endif %}
-            <p>{{collaborator.username}}</p>
+            <div class="collaborator-container">
+                {% if collaborator.profile.avatar %}
+                <img class="profile-picture" src="{{collaborator.profile.avatar.url }}" alt="profile picture" width="50" height="50">
+                {% else %}
+                <img src="{% get_media_prefix %}assets/default-profile-picture.png" alt="profile picture" width="50" height="50">
+                {% endif %}
+                <p>{{collaborator.username}}</p>
+            </div>
             {% endfor %}
         </div>
-        <p>Add</p>
+        <p id="add-collaborator">Add</p> -->
     </div>
 </main>
 {% endblock body %}
