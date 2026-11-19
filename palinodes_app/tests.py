@@ -29,15 +29,15 @@ class DirectoryTestCase(TestCase):
         super().tearDown()
 
     def test_is_repository(self):
-        self.assertEquals(True, self.repo.is_repository)
+        self.assertEqual(True, self.repo.is_repository)
 
     def test_directory_path(self):
         path1 = self.dir1.path
-        self.assertEquals(f"1000/{self.repo.name}/dir1", path1)
+        self.assertEqual(f"1000/{self.repo.name}/dir1", path1)
         path2 = self.dir2.path
-        self.assertEquals(f"1000/{self.repo.name}/dir1/dir11", path2)
+        self.assertEqual(f"1000/{self.repo.name}/dir1/dir11", path2)
         path3 = self.dir3.path
-        self.assertEquals(f"1000/{self.repo.name}/dir1/dir11/dir111", path3)
+        self.assertEqual(f"1000/{self.repo.name}/dir1/dir11/dir111", path3)
 
     def test_last_edited(self):
         #check for last edited for file at repository level
@@ -74,7 +74,7 @@ class FileTestCase(TestCase):
         self.assertEqual("1000/test_repository/test_directory/EvaKCarrots_1.aif", self.file1.file.name, "The paths don't match")
 
     def test_is_audiofile(self):
-        self.assertEquals(True, self.file1.is_audiofile, f"is_audiofile should return True but returns {self.file1.is_audiofile}")
+        self.assertEqual(True, self.file1.is_audiofile, f"is_audiofile should return True but returns {self.file1.is_audiofile}")
 
 class ProfileTestCase(TestCase):
     def setUp(self):
@@ -117,13 +117,13 @@ class RepositorySerializerTestCase(TestCase):
         self.serializer = RepositorySerializer(self.repo)
 
     def test_serializer_name(self):
-        self.assertEquals('repo', self.serializer.data['name'], "repository names don't match")
+        self.assertEqual('repo', self.serializer.data["name"], "repository names don't match")
 
     def test_serializer_description(self):
-        self.assertEquals(self.description, self.serializer.data['description'], "repository description doesn't match")
+        self.assertEqual(self.description, self.serializer.data['description'], "repository description doesn't match")
 
     def test_serializer_owner(self):
-        self.assertEquals('Alice', self.serializer.data['owner'], "repository owners don't match")
+        self.assertEqual('Alice', self.serializer.data['owner'], "repository owners don't match")
 
     def test_serializer_collaborators(self):
         self.assertListEqual(['Bob', 'Claire'], self.serializer.data["collaborators_names"], "The repository's collaborators' names don't match")
@@ -164,7 +164,7 @@ class NewDirectoryApiTestCase(TestCase):
         c = Client()
         c.force_login(self.user)
         response = c.post("/api/new-directory", {"name": "test subsubdir", "parent_pk": self.dir1.pk}, content_type="application/json")
-        self.assertEquals(200, response.status_code, f"wrong status code, api failed to save new directory, instead gave:\n {response.json()['message']}")
+        self.assertEqual(200, response.status_code, f"wrong status code, api failed to save new directory, instead gave:\n {response.json()['message']}")
         directory = Directory.objects.get(name="test subsubdir")
         if directory:
             directory.delete()
@@ -186,7 +186,7 @@ class NewFileApiTestCase(TestCase):
         c.force_login(self.user)
         with open("palinodes_app/testFiles/EvaKCarrots_1.aif", 'rb') as file:
             response = c.post("/api/new-file", {"file": file, "parentpk": self.dir.pk})
-        self.assertEquals(200, response.status_code, response.json()["message"])
+        self.assertEqual(200, response.status_code, response.json()["message"])
         instance = FileModel.objects.get(parent=self.dir)
         self.assertIsNotNone(instance, "instance not saved")
         if instance:
@@ -211,7 +211,7 @@ class DeleteFileApiTestCase(TestCase):
         c.force_login(self.user)
         response = c.post("/api/delete-file", {"filepk": self.file.pk}, content_type="application/json")
 
-        self.assertEquals(200, response.status_code, response.json()["message"])
+        self.assertEqual(200, response.status_code, response.json()["message"])
 
 
 class NotificationsApiTestCase(TestCase):

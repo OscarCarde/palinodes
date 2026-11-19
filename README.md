@@ -30,4 +30,6 @@ https://www.figma.com/proto/TlmfKpF09IonyECzyZjE9D/plainodes.com?page-id=0%3A1&n
 - install dependencies `pip install -r requirements.txt`
 - run with `python manage.py runserver`
 - login with superuser **admin**, password **1234**
-  
+
+# API  routes:
+![alt text](api-view.jpeg)
